@@ -1,0 +1,20 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <canvas  wx:if='{{ imageUrl }}' bindtap="selectImg" style='margin-top: 20px; width: {{ img.width}}; height: {{ img.height }}' canvas-id="myCanvas"></canvas>
+  <div style='margin-top: 10px;'>
+    <button wx:if="{{ !imageUrl && hasUserInfo && canIUse }}" bindtap="selectImg"> 选择图片 </button>
+    <button wx:if="{{ imageUrl }}" bindtap="uploadImg"> 上传图片 </button>
+    <button wx:if="{{ imageUrl }}" bindtap="clearImg"> 清空图片 </button>
+  </div>
+  <view class="usermotto">
+    <text class="user-motto">{{user_code}}</text>
+  </view>
+  0.0.14
+</view>
